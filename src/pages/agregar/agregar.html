@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>
+      subir imagenes
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngIf="imagePreview">
+    <img [src]="imagePreview">
+    <div>{{ uploadPercent | async }}</div>
+    <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+  </ion-item>
+
+  <ion-item> 
+    <ion-label fixed>Imagen</ion-label>
+    
+    <button ion-button item-end large (click)="abririmagen()"><ion-icon name="images"></ion-icon></button>
+    <button ion-button item-end large (click)="openImagePickerCrop()"><ion-icon name="images"></ion-icon></button>
+    
+  </ion-item>
+ 
+
+</ion-content>

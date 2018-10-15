@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Ingeniería en Reder Y Telecomunicación</ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+      <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <button *ngIf='horario.grupo_a != null' class="irt" ion-item  (tap)= "detalles(horario.a)" >
+        {{horario.grupo_a}}   
+      </button>
+      <button *ngIf='horario.grupo_b != null' class="irt" ion-item  (tap)= "detalles(horario.b)" >
+        {{horario.grupo_b}}   
+      </button>
+      <button *ngIf='horario.grupo_c != null' class="irt" ion-item  (tap)= "detalles(horario.c)" >
+        {{horario.grupo_c}}   
+      </button>
+
+</ion-content>

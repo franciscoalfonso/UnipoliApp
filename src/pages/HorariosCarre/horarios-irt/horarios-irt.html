@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Ingeniería en Reder Y Telecomunicación</ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+      <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list *ngFor="let horario of horarios | async"> 
+    <button *ngIf='horario.enable == true' class="irt" ion-item  (tap)= "detalles(horario)" >
+        {{horario.grado}}   
+      </button>
+  </ion-list> 
+ 
+
+</ion-content>

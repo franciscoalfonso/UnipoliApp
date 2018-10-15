@@ -1,0 +1,61 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Alumno</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+      <ion-card-content>
+      
+        <ion-list radio-group  [(ngModel)]="carrera">
+          <h2>
+            <b>
+            Selecciona la carrera a la que perteneces
+          </b>
+          </h2>
+        <br>
+          <ion-item>
+            <ion-label>Ing. Software</ion-label>
+            <ion-radio  value="true" ></ion-radio>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label>Lic. En Adm. De PyME's</ion-label>
+            <ion-radio value="pymes"></ion-radio>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label>Ing. En Tec. Ambiental</ion-label>
+            <ion-radio value="Ambiental"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Ing. Civil</ion-label>
+            <ion-radio value="Civil"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>Ing. En Tec. De Manufactura</ion-label>
+              <ion-radio value="Manufactura"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>Ing. En Redes y Telecomunicacion</ion-label>
+              <ion-radio value="telematica"></ion-radio>
+          </ion-item>
+
+        </ion-list>
+
+
+        
+        
+        <button class="btn" ion-button round color="danger" (click) = "hide(carrera)" >aceptar</button>
+      </ion-card-content>
+    
+    </ion-card>
+
+</ion-content>

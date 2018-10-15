@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Enlace</ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+        <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <button ion-button color="danger" block (click)="browser1()">
+      Plataforma Educativa (Moodle)</button>
+
+    <button ion-button color="danger" block (click)="browser2()">
+      Control Escolar</button>
+
+    <button ion-button color="danger" block (click)="browser3()">
+      Trámite Estancias y Estadías</button>
+
+</ion-content>

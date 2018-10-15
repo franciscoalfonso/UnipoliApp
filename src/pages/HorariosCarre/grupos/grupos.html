@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Grupo</ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+      <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>        
+    <ion-card insert>
+        <img src="{{img}}"/>
+        <button ion-button clear icon-left>
+          <ion-icon name="expand"></ion-icon>
+          <a href="{{img}}">VER</a>
+        </button>
+      </ion-card>
+</ion-content>

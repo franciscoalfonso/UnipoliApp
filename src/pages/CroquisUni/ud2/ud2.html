@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>UD2</ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+        <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list *ngFor="let sitio of sitios | async"> 
+        <button class="ud2" ion-item  (tap)= "detalles(sitio)" >
+            <ion-icon name="{{sitio.icono}}"item-start></ion-icon>
+            {{sitio.titulo}}   
+          </button>
+        
+    </ion-list> 
+
+</ion-content>
+

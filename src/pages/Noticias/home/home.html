@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Noticias</ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+        <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngFor="let noticia of noticias | async">
+    <ion-item>
+      <ion-thumbnail item-start>
+          <img class="uno" src="{{noticia.foto}}">
+      </ion-thumbnail>
+      <h2>{{noticia.titulo}}</h2>
+      <p>{{noticia.descripcion}}</p>
+      <button ion-button clear item-end (tap)="detalles(noticia)">ver</button>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
