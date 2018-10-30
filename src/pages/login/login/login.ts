@@ -6,6 +6,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { RegistroPage, OlvidarcontraceñaPage } from "../../index.paginas"
 import { AlertController } from 'ionic-angular';
 import { HomePage } from '../../Noticias/home/home';
+import { MsjAmbPage } from '../../Noticias/msj-amb/msj-amb';
+import { MsjCivPage } from '../../Noticias/msj-civ/msj-civ';
+import { MsjTelePage } from '../../Noticias/msj-tele/msj-tele';
+import { MsjPyMPage } from '../../Noticias/msj-py-m/msj-py-m';
+import { MsjManuPage } from '../../Noticias/msj-manu/msj-manu';
 
 @Component({
   selector: 'page-login',
@@ -17,12 +22,13 @@ export class LoginPage {
   olvidar: any = OlvidarcontraceñaPage;
 
   user = {} as User;
+  carrera: string = '';
 
   constructor(private afAuth: AngularFireAuth,
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    ) {
+  ) {
   }
 
   async login(user: User) {
@@ -41,19 +47,52 @@ export class LoginPage {
             });
            */
 
+      this.carrera = this.navParams.get('carrera');
+
       const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
         .then((user) => {
-          if (user.emailVerified) {
-            this.navCtrl.setRoot(HomePage);
-            let alert = this.alertCtrl.create({
-              title: 'iniciaste sesion',
-              buttons: ['OK']
-            });
-
-            alert.present();
-          } else {
+        
+          switch (this.carrera){
+            case "software" :{
+              this.navCtrl.setRoot(HomePage);
+              break;
+            }
+            case "ambiental" :{
+              this.navCtrl.setRoot(MsjAmbPage);
+              break;
+            }
+            case "civil" :{
+              this.navCtrl.setRoot(MsjCivPage);
+              break;
+            }
+            case "manufactura" :{
+              this.navCtrl.setRoot(MsjManuPage);
+              break;
+            }
+            case "pymes" :{
+              this.navCtrl.setRoot(MsjPyMPage);
+              break;
+            }
+            case "telematica" :{
+              this.navCtrl.setRoot(MsjTelePage);
+              break;
+            }
+           
           }
-        });
+
+            if (user.emailVerified) {
+              
+              let alert = this.alertCtrl.create({
+                title: 'iniciaste sesion',
+                buttons: ['OK']
+              });
+
+              alert.present();
+            } else {
+            }
+
+          
+          });
 
     }
     catch (e) {

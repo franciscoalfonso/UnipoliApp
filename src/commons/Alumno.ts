@@ -4,5 +4,7 @@ export interface Alumno {
     telematica: boolean,
     civil: boolean,
     manufactura: boolean,
-    pymes: boolean
+    pymes: boolean,
+    email: string,
+    admin: boolean
 }

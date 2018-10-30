@@ -41,6 +41,12 @@ import {
   HorariosItmPage,
   GrupopymesPage,
   HorariosPyMesPage,
+  MsjAmbPage,
+  MsjCivPage,
+  MsjManuPage,
+  MsjPyMPage,
+  MsjTelePage,
+  MensajesTabsPage
     
 } from '../pages/index.paginas';
 
@@ -97,6 +103,12 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     HorariosItmPage,
     GrupopymesPage,
     HorariosPyMesPage,
+    MsjAmbPage,
+    MsjCivPage,
+    MsjManuPage,
+    MsjPyMPage,
+    MsjTelePage,
+    MensajesTabsPage
     ],
   imports: [
     BrowserModule,
@@ -141,6 +153,12 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     HorariosItmPage,
     GrupopymesPage,
     HorariosPyMesPage,
+    MsjAmbPage,
+    MsjCivPage,
+    MsjManuPage,
+    MsjPyMPage,
+    MsjTelePage,
+    MensajesTabsPage
     ],
   providers: [
     StatusBar,
@@ -151,7 +169,7 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     LocalNotifications,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginUserProvider,
-    //FirebaseServiceProvider
+    
   ]
 })
 export class AppModule { }

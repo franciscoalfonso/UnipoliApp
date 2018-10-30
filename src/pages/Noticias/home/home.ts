@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Noticia } from '../../../commons/Notica'
+import { MensajeISW } from '../../../commons/MensajeIsw'
 import { NavController, NavParams } from 'ionic-angular';
 
 import { VerDetallesPage, SeleccionarCarreraPage } from '../../index.paginas';
+
 
 const RUTA: string = 'https://firebasestorage.googleapis.com/v0/b/appunipoli.appspot.com/o/mensaje.png?alt=media&token=c6dc46cc-6df4-455a-96e0-3aac2502778d';
 
@@ -21,53 +22,116 @@ export class HomePage {
   homeg: any = VerDetallesPage;
   seleccionar: any = SeleccionarCarreraPage;
 
-  private noticiasCollection: AngularFirestoreCollection<Noticia>;
+  private noticiasCollection: AngularFirestoreCollection<MensajeISW>;
 
-  noticias: Observable<Noticia[]>;
+  noticias: Observable<MensajeISW[]>;
 
   titulo: string = '';
   descripcion: string = '';
+  carrera: string = '';
 
   constructor(private readonly afs: AngularFirestore,
-    private database: AngularFirestore,
+
     public navCtrl: NavController,
     public navParams: NavParams
   ) {
+    this.carrera = this.navParams.get('carrera');
 
-    this.noticiasCollection = afs.collection<Noticia>('noticiasEventos');
-    this.noticias = this.noticiasCollection.snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as Noticia;
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    );
+    switch (this.carrera) {
+      case "ambiental": {
+        this.noticiasCollection = afs.collection<MensajeISW>("MensajeAmbiental");
+        this.noticias = this.noticiasCollection.snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+            const data = a.payload.doc.data() as MensajeISW;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          }))
+        );
+        break;
+      }
+      case "software": {
+        this.noticiasCollection = afs.collection<MensajeISW>("MensajesSoftware");
+        this.noticias = this.noticiasCollection.snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+            const data = a.payload.doc.data() as MensajeISW;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          }))
+        );
+        break;
+      }
+      case "pymes": {
+        this.noticiasCollection = afs.collection<MensajeISW>("MensajesPymes");
+        this.noticias = this.noticiasCollection.snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+            const data = a.payload.doc.data() as MensajeISW;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          }))
+        );
+        break;
+      }
+      case "manufactura": {
+        this.noticiasCollection = afs.collection<MensajeISW>("MensajesManufactura");
+        this.noticias = this.noticiasCollection.snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+            const data = a.payload.doc.data() as MensajeISW;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          }))
+        );
+        break;
+      }
+      case "civil": {
+        this.noticiasCollection = afs.collection<MensajeISW>("MensajesCivil");
+        this.noticias = this.noticiasCollection.snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+            const data = a.payload.doc.data() as MensajeISW;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          }))
+        );
+        break;
+      }
+      case "telematica": {
+        this.noticiasCollection = afs.collection<MensajeISW>("MensajesTelematica");
+        this.noticias = this.noticiasCollection.snapshotChanges().pipe(
+          map(actions => actions.map(a => {
+            const data = a.payload.doc.data() as MensajeISW;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          }))
+        );
+        break;
+      }
+    }
 
-    try{
+
+    try {
       this.titulo = this.navParams.get('titulo');
       this.descripcion = this.navParams.get('descripcion');
-  
+
       console.log(this.titulo);
 
       if (this.titulo != "") {
 
-      
+
         const id = this.afs.createId();
-        const noticia: Noticia = { 'titulo': this.titulo, 'descripcion': this.descripcion, 'foto': RUTA };
+        const noticia: MensajeISW = { 'titulo': this.titulo, 'descripcion': this.descripcion, 'foto': RUTA };
         this.noticiasCollection.doc(id).set(noticia);
         this.navCtrl.push(VerDetallesPage, {
           id: noticia
         });
       }
-      
-    }catch{
+
+    } catch{
       console.log("Algo salió mal...");
 
     }
 
   }
 
-  detalles(_noticia: Noticia) {
+  detalles(_noticia: MensajeISW) {
     this.navCtrl.push(VerDetallesPage, {
       id: _noticia
     })

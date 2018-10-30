@@ -24,6 +24,7 @@
         <ion-input type="password" [(ngModel)]="user.password2" ></ion-input>
       </ion-item>
     <br>
+
     <br>
       <ion-list radio-group  [(ngModel)]="carrera">
         <h6>
@@ -33,7 +34,7 @@
         </h6>
         <ion-item>
           <ion-label>Ing. Software</ion-label>
-          <ion-radio value="isw" ></ion-radio>
+          <ion-radio value="Software" ></ion-radio>
         </ion-item>
       
         <ion-item>
@@ -43,25 +44,25 @@
       
         <ion-item>
           <ion-label>Ing. En Tec. Ambiental</ion-label>
-          <ion-radio value="ita"></ion-radio>
+          <ion-radio value="ambiental"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Ing. Civil</ion-label>
-          <ion-radio value="ic"></ion-radio>
+          <ion-radio value="civil"></ion-radio>
         </ion-item>
 
         <ion-item>
             <ion-label>Ing. En Tec. De Manufactura</ion-label>
-            <ion-radio value="itm"></ion-radio>
+            <ion-radio value="manufactura"></ion-radio>
         </ion-item>
 
         <ion-item>
             <ion-label>Ing. En Redes y Telecomunicacion</ion-label>
-            <ion-radio value="irt"></ion-radio>
+            <ion-radio value="telematica"></ion-radio>
         </ion-item>
 
       </ion-list>
-      <button class="btnRe" ion-button block color="danger" (click)="register(user)" [navPush]= "logi">Registrarse</button>
+      <button class="btnRe" ion-button block color="danger" (click)="register(user, carrera)"   [navPush]= "logi">Registrarse</button>
 
 </ion-content>

@@ -1,58 +1,60 @@
 <ion-header>
 
-    <ion-navbar color="secondary">
-      <ion-title>Informacion y Evento</ion-title>
-      <ion-buttons end [navPush]= "seleccionar">
-          <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
-    </ion-navbar>
-  
-  </ion-header>
-  
-  
-  <ion-content padding>
-      <ion-card>
-    
-          <ion-list radio-group>
-          <ion-list-header class="list">
-            Dirigido al alumnado de:
-          </ion-list-header>
-       
-           <ion-item>
-            <ion-label>Ing. Software</ion-label>
-            <ion-toggle checked="false" color="purpura"></ion-toggle>
-          </ion-item>
+  <ion-navbar color="secondary">
+    <ion-title>Informacion y Evento</ion-title>
+    <ion-buttons end [navPush]="seleccionar">
+      <button ion-button icon-only>
+        <ion-icon name="contact"></ion-icon>
+      </button></ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+
+    <ion-list  >
+      <ion-list-header class="list">
+        Dirigido al alumnado de:
       
-          <ion-item>
-            <ion-label>Lic. En Adm. De PyME's</ion-label>
-            <ion-toggle  checked="false" color="rojo"></ion-toggle>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Ing. En Tec. Ambiental</ion-label>
-            <ion-toggle checked="false" color="secondary"></ion-toggle>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Ing. Civil</ion-label>
-            <ion-toggle checked="false" color="amarillo"></ion-toggle>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Ing. En Tec. De Manufactura</ion-label>
-            <ion-toggle checked="false" color="naranja"></ion-toggle>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label> Ing. En Redes y Telecomunicacion</ion-label>
-            <ion-toggle checked="false" color="azul"></ion-toggle>
-          </ion-item>
-      
-      
-        </ion-list>
-      
-          <button ion-button (click)="scheduleNotification()" class="enviar" color="danger" round>ENVIAR</button>
-        </ion-card>
-    
-  
-  </ion-content>
-  
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>Ing. Software</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="software" color="purpura"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lic. En Adm. De PyME's</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="pymes" color="rojo"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Ing. En Tec. Ambiental</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="ambiental" color="secondary"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Ing. Civil</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="civil" color="amarillo"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Ing. En Tec. De Manufactura</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="manufactura" color="naranja"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-label> Ing. En Redes y Telecomunicacion</ion-label>
+        <ion-toggle checked="false" [(ngModel)]="telematica" color="azul"></ion-toggle>
+      </ion-item>
+
+
+    </ion-list>
+
+    <button ion-button (click)="scheduleNotification(carrera)" class="enviar" color="danger" round>ENVIAR</button>
+  </ion-card>
+
+
+</ion-content>

@@ -14,6 +14,7 @@ import { map } from 'rxjs/operators';
 export class AlumnoPage {
   
   software : any;
+  carrera: string = '';
 
     studentDoc:AngularFirestoreDocument<Alumno[]>;
 
@@ -27,7 +28,7 @@ export class AlumnoPage {
   constructor(private readonly afs: AngularFirestore,
     public navCtrl: NavController,
     private database: AngularFirestore) {
-
+/*
     this.StudentCollection = this.afs.collection<Alumno>('alumnos');
     this.student = this.StudentCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -36,13 +37,19 @@ export class AlumnoPage {
         return { id, ...data }
       }))
     );
-
+*/
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AlumnoPage');
   }
 
+  send(){
+    console.log(this.carrera);
+    this.navCtrl.push(HomePage, {'carrera':this.carrera})
+  }
+
+  /*
   hide(software, ambiental, telematica, pymes, civil, manufactura , _student: Alumno) {
     const id = this.database.createId();
     const student: Alumno = {
@@ -51,10 +58,12 @@ export class AlumnoPage {
       'telematica': telematica,
       'pymes': pymes,
       'civil': civil,
-      'manufactura': manufactura
+      'manufactura': manufactura,
+      'admin': false,
+      'email': this
     }
     this.StudentCollection.doc(id).set(student);
     this.navCtrl.push(HomePage);
   }
-
+*/
 }
