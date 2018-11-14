@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>inforegistro</ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+        <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngFor="let estudiante of student | async">
+    <ion-item>
+      <ion-thumbnail item-start>
+          
+      </ion-thumbnail>
+      <h2>{{estudiante.email}}</h2>
+      <h2>{{estudiante.software}}</h2>
+      
+      <button ion-button clear item-end (tap)="elobserbable(estudiante)">ver</button>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

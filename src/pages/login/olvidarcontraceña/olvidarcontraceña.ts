@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { User } from "../../../shared/models/user";
-import { ToastController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -9,20 +9,55 @@ import { ToastController } from 'ionic-angular';
   templateUrl: 'olvidarcontraceña.html',
 })
 export class OlvidarcontraceñaPage {
-  user = {} as User;
+  myForm: FormGroup;
 
-  constructor(public toastCtrl: ToastController,  public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private formBuilder: FormBuilder,
+    public afAuth: AngularFireAuth,
+    public nav: NavController,
+    public alertCtrl: AlertController
+  ) {
+    this.myForm = this.formBuilder.group({
+      email: ['', Validators.required]
+    });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OlvidarcontraPage');
+    console.log('recuperar contracela');
   }
-  presentToast() {
-    let toast = this.toastCtrl.create({
-      message: 'Enviando instrucciones de restablecimiento de contraseña via correo electronico',
-      duration: 10000
+
+  resetPassword(){
+    console.log("Email:" + this.myForm.value.email);
+    
+    this.afAuth.auth.sendPasswordResetEmail(this.myForm.value.email)
+    .then((user) => {
+      let alert = this.alertCtrl.create({
+        message: "Te enviamos un link a tu correo.",
+        buttons: [
+          {
+            text: "Ok",
+            role: 'cancel',
+            handler: () => {
+              this.nav.pop();
+            }
+          }
+        ]
+      });
+      alert.present();
+    }, (error) => {
+      var errorMessage: string = error.message;
+      let errorAlert = this.alertCtrl.create({
+        message: errorMessage,
+        buttons: [
+          {
+            text: "Ok",
+            role: 'cancel'
+          }
+        ]
+      });
+      errorAlert.present();
     });
-    toast.present();
   }
 
 }
+

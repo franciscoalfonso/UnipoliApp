@@ -26,43 +26,44 @@
     <br>
 
     <br>
-      <ion-list radio-group  [(ngModel)]="carrera">
-        <h6>
-          <b>
-          Selecciona la carrera a la que perteneces
-        </b>
-        </h6>
-        <ion-item>
-          <ion-label>Ing. Software</ion-label>
-          <ion-radio value="Software" ></ion-radio>
-        </ion-item>
+  <ion-list radio-group  [(ngModel)]="carrera">
+    <h6>
+      <b>
+      Selecciona la carrera a la que perteneces
+    </b>
+    </h6>
+    <ion-item>
+      <ion-label>Ing. Software</ion-label>
+      <ion-radio value="software" ></ion-radio>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Lic. En Adm. De PyME's</ion-label>
+      <ion-radio value="pymes"></ion-radio>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Ing. En Tec. Ambiental</ion-label>
+      <ion-radio value="ambiental"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ing. Civil</ion-label>
+      <ion-radio value="civil"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Ing. En Tec. De Manufactura</ion-label>
+        <ion-radio value="manufactura"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Ing. En Redes y Telecomunicacion</ion-label>
+        <ion-radio value="telematica"></ion-radio>
+    </ion-item>
+
+  </ion-list>
       
-        <ion-item>
-          <ion-label>Lic. En Adm. De PyME's</ion-label>
-          <ion-radio value="pymes"></ion-radio>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label>Ing. En Tec. Ambiental</ion-label>
-          <ion-radio value="ambiental"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Ing. Civil</ion-label>
-          <ion-radio value="civil"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-            <ion-label>Ing. En Tec. De Manufactura</ion-label>
-            <ion-radio value="manufactura"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-            <ion-label>Ing. En Redes y Telecomunicacion</ion-label>
-            <ion-radio value="telematica"></ion-radio>
-        </ion-item>
-
-      </ion-list>
       <button class="btnRe" ion-button block color="danger" (click)="register(user, carrera)"   [navPush]= "logi">Registrarse</button>
 
 </ion-content>

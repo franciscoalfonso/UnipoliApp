@@ -19,6 +19,9 @@ export class VerDetallesPage {
      
       console.log(navParams);
       this.noticia= this.navParams.get('id');
+      console.log(this.noticia.descripcion);
+      console.log(this.noticia.titulo);
+      
   }
 
 

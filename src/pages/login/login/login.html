@@ -9,7 +9,28 @@
       
 <ion-content padding>
     <ion-icon class="icono" name="contact"></ion-icon>
-        
+
+    <form [formGroup]="myForm" (ngSubmit)="loginUser()">
+      <ion-list>
+        <ion-item text-center>
+       
+        </ion-item>
+        <ion-item>
+          <ion-icon name="person" item-left></ion-icon>
+          <ion-label stacked>Email:</ion-label>
+          <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="key" item-left></ion-icon>
+          <ion-label stacked>Password:</ion-label>
+          <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div padding>
+        <button color="danger" ion-button block type="submit" [disabled]="!myForm.valid">Ingresar</button>
+      </div>
+    </form> 
+    <!-- 
         <ion-item>
           <ion-label floating>Correo Electrònico</ion-label>
           <ion-input type="text" [(ngModel)]="user.email"></ion-input>
@@ -20,7 +41,7 @@
           <ion-input type="password" [(ngModel)]="user.password"></ion-input>
         </ion-item>
         <button class="btnLo" ion-button block color="danger" (click)="login(user)">Iniciar Sesion</button>
-
+-->  
         <h5 class="letrero">¿NO ESTAS REGISTRADO?</h5>
         <button class="btnRe" ion-button clear color="danger" [navPush]= "registro">Registrate Aqui</button>
 

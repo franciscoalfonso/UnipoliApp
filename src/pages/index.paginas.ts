@@ -1,3 +1,5 @@
+import { from } from 'rxjs';
+
 export { VerDetallesPage } from './Noticias/ver-detalles/ver-detalles'
 export { TabsPage } from './tabs/tabs';
 export { AreasDeportivasYCafeteriasPage } from './CroquisUni/areas-deportivas-y-cafeterias/areas-deportivas-y-cafeterias';
@@ -32,9 +34,19 @@ export { GrupoitmPage } from './HorariosCarre/grupoitm/grupoitm';
 export { HorariosPyMesPage } from './HorariosCarre/horarios-py-mes/horarios-py-mes';
 export { GrupopymesPage } from './HorariosCarre/grupopymes/grupopymes';
 export { AgregarPage } from './agregar/agregar';
-export { MsjAmbPage } from './Noticias/msj-amb/msj-amb';
+/*export { MsjAmbPage } from './Noticias/msj-amb/msj-amb';
 export { MsjCivPage } from './Noticias/msj-civ/msj-civ';
 export { MsjManuPage } from './Noticias/msj-manu/msj-manu';
 export { MsjPyMPage } from './Noticias/msj-py-m/msj-py-m';
 export { MsjTelePage } from './Noticias/msj-tele/msj-tele';
 export { MensajesTabsPage } from './Noticias/mensajes-tabs/mensajes-tabs';
+*/
+export { CroquisUniPage } from './aspirantes/croquis-uni/croquis-uni';
+export { DirectorioInstiPage } from './aspirantes/directorio-insti/directorio-insti';
+export { OfertaAcademicaPage } from './aspirantes/oferta-academica/oferta-academica';
+export { PaaldohadeservirPage } from './aspirantes/paaldohadeservir/paaldohadeservir';
+export { UniversidadPage } from './aspirantes/universidad/universidad';
+export { TabsAspiPage } from './aspirantes/tabs-aspi/tabs-aspi';
+export { CarreraRegistroPage } from './login/carrera-registro/carrera-registro';
+export { InforegistroPage } from './login/inforegistro/inforegistro';
+export { DatosdusuarioPage } from './login/datosdusuario/datosdusuario'

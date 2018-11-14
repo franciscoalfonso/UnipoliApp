@@ -29,16 +29,7 @@ telematica: boolean;
 
     this.data.title = this.navParams.get('title');
     this.data.description = this.navParams.get('desc');
-
-/*
-    console.log(this.software); 
-    console.log(this.pymes);
-    console.log(this.ambiental);
-    console.log(this.civil);
-    console.log(this.manufactura);
-    console.log(this.telematica);
-*/
-    
+   
     var date = new Date(this.data.title + " " + this.data.description);
     console.log(date);
     this.localNotifications.schedule({

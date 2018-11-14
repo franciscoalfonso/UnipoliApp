@@ -6,5 +6,6 @@ export interface Alumno {
     manufactura: boolean,
     pymes: boolean,
     email: string,
-    admin: boolean
+    admin: boolean,
+    aspirante: boolean
 }

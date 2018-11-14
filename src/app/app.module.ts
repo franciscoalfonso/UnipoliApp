@@ -41,13 +41,16 @@ import {
   HorariosItmPage,
   GrupopymesPage,
   HorariosPyMesPage,
-  MsjAmbPage,
-  MsjCivPage,
-  MsjManuPage,
-  MsjPyMPage,
-  MsjTelePage,
-  MensajesTabsPage
-    
+  CroquisUniPage,
+  DirectorioInstiPage,
+  OfertaAcademicaPage,
+  TabsAspiPage,
+  UniversidadPage,
+  PaaldohadeservirPage,
+  CarreraRegistroPage,
+  InforegistroPage,
+  DatosdusuarioPage
+
 } from '../pages/index.paginas';
 
 //plugins angularfire2
@@ -103,13 +106,16 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     HorariosItmPage,
     GrupopymesPage,
     HorariosPyMesPage,
-    MsjAmbPage,
-    MsjCivPage,
-    MsjManuPage,
-    MsjPyMPage,
-    MsjTelePage,
-    MensajesTabsPage
-    ],
+    CroquisUniPage,
+    DirectorioInstiPage,
+    OfertaAcademicaPage,
+    TabsAspiPage,
+    UniversidadPage,
+    PaaldohadeservirPage,
+    CarreraRegistroPage,
+    InforegistroPage,
+    DatosdusuarioPage
+  ],
   imports: [
     BrowserModule,
     AngularFirestoreModule,
@@ -153,13 +159,16 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     HorariosItmPage,
     GrupopymesPage,
     HorariosPyMesPage,
-    MsjAmbPage,
-    MsjCivPage,
-    MsjManuPage,
-    MsjPyMPage,
-    MsjTelePage,
-    MensajesTabsPage
-    ],
+    CroquisUniPage,
+    DirectorioInstiPage,
+    OfertaAcademicaPage,
+    TabsAspiPage,
+    UniversidadPage,
+    PaaldohadeservirPage,
+    CarreraRegistroPage,
+    InforegistroPage,
+    DatosdusuarioPage
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -169,7 +178,7 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     LocalNotifications,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginUserProvider,
-    
+
   ]
 })
 export class AppModule { }

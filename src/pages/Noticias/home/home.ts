@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MensajeISW } from '../../../commons/MensajeIsw'
+import { Mensajes } from '../../../commons/Mensaje';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { VerDetallesPage, SeleccionarCarreraPage } from '../../index.paginas';
@@ -22,27 +21,29 @@ export class HomePage {
   homeg: any = VerDetallesPage;
   seleccionar: any = SeleccionarCarreraPage;
 
-  private noticiasCollection: AngularFirestoreCollection<MensajeISW>;
+  private noticiasCollection: AngularFirestoreCollection<Mensajes>;
 
-  noticias: Observable<MensajeISW[]>;
+  noticias: Observable<Mensajes[]>;
 
   titulo: string = '';
   descripcion: string = '';
-  carrera: string = '';
+  carrera: string ;
+  prueba:string='holis';
 
   constructor(private readonly afs: AngularFirestore,
-
     public navCtrl: NavController,
-    public navParams: NavParams
-  ) {
-    this.carrera = this.navParams.get('carrera');
+    public navParams: NavParams) {
+
+      this.carrera = this.navParams.get('carrera');
+      
+      console.log(this.carrera, ": esta carrera llego a home");
 
     switch (this.carrera) {
       case "ambiental": {
-        this.noticiasCollection = afs.collection<MensajeISW>("MensajeAmbiental");
+        this.noticiasCollection = afs.collection<Mensajes>("MensajeAmbiental");
         this.noticias = this.noticiasCollection.snapshotChanges().pipe(
           map(actions => actions.map(a => {
-            const data = a.payload.doc.data() as MensajeISW;
+            const data = a.payload.doc.data() as Mensajes;
             const id = a.payload.doc.id;
             return { id, ...data };
           }))
@@ -50,32 +51,34 @@ export class HomePage {
         break;
       }
       case "software": {
-        this.noticiasCollection = afs.collection<MensajeISW>("MensajesSoftware");
+        this.noticiasCollection = afs.collection<Mensajes>("MensajesSoftware" , ref => ref.where('descripcion', '==', this.prueba ));
         this.noticias = this.noticiasCollection.snapshotChanges().pipe(
           map(actions => actions.map(a => {
-            const data = a.payload.doc.data() as MensajeISW;
+            const data = a.payload.doc.data() as Mensajes;
             const id = a.payload.doc.id;
             return { id, ...data };
+        
           }))
         );
         break;
       }
       case "pymes": {
-        this.noticiasCollection = afs.collection<MensajeISW>("MensajesPymes");
+        this.noticiasCollection = afs.collection<Mensajes>("MensajesPymes");
         this.noticias = this.noticiasCollection.snapshotChanges().pipe(
           map(actions => actions.map(a => {
-            const data = a.payload.doc.data() as MensajeISW;
+            const data = a.payload.doc.data() as Mensajes;
             const id = a.payload.doc.id;
             return { id, ...data };
           }))
         );
+        
         break;
       }
       case "manufactura": {
-        this.noticiasCollection = afs.collection<MensajeISW>("MensajesManufactura");
+        this.noticiasCollection = afs.collection<Mensajes>("MensajesManufactura");
         this.noticias = this.noticiasCollection.snapshotChanges().pipe(
           map(actions => actions.map(a => {
-            const data = a.payload.doc.data() as MensajeISW;
+            const data = a.payload.doc.data() as Mensajes;
             const id = a.payload.doc.id;
             return { id, ...data };
           }))
@@ -83,10 +86,10 @@ export class HomePage {
         break;
       }
       case "civil": {
-        this.noticiasCollection = afs.collection<MensajeISW>("MensajesCivil");
+        this.noticiasCollection = afs.collection<Mensajes>("MensajesCivil");
         this.noticias = this.noticiasCollection.snapshotChanges().pipe(
           map(actions => actions.map(a => {
-            const data = a.payload.doc.data() as MensajeISW;
+            const data = a.payload.doc.data() as Mensajes;
             const id = a.payload.doc.id;
             return { id, ...data };
           }))
@@ -94,10 +97,10 @@ export class HomePage {
         break;
       }
       case "telematica": {
-        this.noticiasCollection = afs.collection<MensajeISW>("MensajesTelematica");
+        this.noticiasCollection = afs.collection<Mensajes>("MensajesTelematica");
         this.noticias = this.noticiasCollection.snapshotChanges().pipe(
           map(actions => actions.map(a => {
-            const data = a.payload.doc.data() as MensajeISW;
+            const data = a.payload.doc.data() as Mensajes;
             const id = a.payload.doc.id;
             return { id, ...data };
           }))
@@ -111,13 +114,11 @@ export class HomePage {
       this.titulo = this.navParams.get('titulo');
       this.descripcion = this.navParams.get('descripcion');
 
-      console.log(this.titulo);
+      
 
       if (this.titulo != "") {
-
-
         const id = this.afs.createId();
-        const noticia: MensajeISW = { 'titulo': this.titulo, 'descripcion': this.descripcion, 'foto': RUTA };
+        const noticia: Mensajes = { 'titulo': this.titulo, 'descripcion': this.descripcion, 'foto': RUTA };
         this.noticiasCollection.doc(id).set(noticia);
         this.navCtrl.push(VerDetallesPage, {
           id: noticia
@@ -125,13 +126,11 @@ export class HomePage {
       }
 
     } catch{
-      console.log("Algo salió mal...");
-
+      
     }
 
   }
-
-  detalles(_noticia: MensajeISW) {
+  detalles(_noticia: Mensajes) {
     this.navCtrl.push(VerDetallesPage, {
       id: _noticia
     })

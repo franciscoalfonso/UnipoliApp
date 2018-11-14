@@ -7,5 +7,5 @@ export interface Registro {
     manufactura: boolean,
     pymes: boolean,
     software: boolean,
-    telematica: boolean
+    telematica: boolean,
 }
