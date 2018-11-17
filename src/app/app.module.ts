@@ -49,7 +49,8 @@ import {
   PaaldohadeservirPage,
   CarreraRegistroPage,
   InforegistroPage,
-  DatosdusuarioPage
+  DatosdusuarioPage,
+  LoginStatePage
 
 } from '../pages/index.paginas';
 
@@ -114,11 +115,12 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     PaaldohadeservirPage,
     CarreraRegistroPage,
     InforegistroPage,
-    DatosdusuarioPage
+    DatosdusuarioPage,
+    LoginStatePage
   ],
   imports: [
     BrowserModule,
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
@@ -167,7 +169,8 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     PaaldohadeservirPage,
     CarreraRegistroPage,
     InforegistroPage,
-    DatosdusuarioPage
+    DatosdusuarioPage,
+    LoginStatePage
   ],
   providers: [
     StatusBar,

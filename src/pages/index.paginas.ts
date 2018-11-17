@@ -50,3 +50,4 @@ export { TabsAspiPage } from './aspirantes/tabs-aspi/tabs-aspi';
 export { CarreraRegistroPage } from './login/carrera-registro/carrera-registro';
 export { InforegistroPage } from './login/inforegistro/inforegistro';
 export { DatosdusuarioPage } from './login/datosdusuario/datosdusuario'
+export { LoginStatePage } from './login/login-state/login-state'

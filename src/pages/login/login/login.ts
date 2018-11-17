@@ -31,8 +31,6 @@ export class LoginPage {
   user: Observable<firebase.User>;
   public loading: Loading;
 
-  private StudentCollection: AngularFirestoreCollection<Registro>;
-  student: Observable<Registro[]>;
   admin: boolean;
   usuario: string = '';
 

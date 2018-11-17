@@ -164,7 +164,7 @@ export class RegistroPage {
         }
 
         this.StudentCollection.doc(id).set(student);
-
+        this.navCtrl.push(HomePage, { 'carrera': this.carrera });
       }
       if (this.carrera == "civil") {
 
@@ -184,6 +184,7 @@ export class RegistroPage {
         }
 
         this.StudentCollection.doc(id).set(student);
+        this.navCtrl.push(HomePage, { 'carrera': this.carrera });
       }
       if (this.carrera == "manufactura") {
 
@@ -204,6 +205,7 @@ export class RegistroPage {
         }
 
         this.StudentCollection.doc(id).set(student);
+        this.navCtrl.push(HomePage, { 'carrera': this.carrera });
       }
       if (this.carrera == "pymes") {
 
@@ -222,6 +224,7 @@ export class RegistroPage {
         }
 
         this.StudentCollection.doc(id).set(student);
+        this.navCtrl.push(HomePage, { 'carrera': this.carrera });
       }
       else if (this.carrera == "telematica") {
 
@@ -240,6 +243,7 @@ export class RegistroPage {
         }
 
         this.StudentCollection.doc(id).set(student);
+        this.navCtrl.push(HomePage, { 'carrera': this.carrera });
       }
     } catch{
 

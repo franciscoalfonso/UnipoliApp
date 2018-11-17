@@ -1,18 +1,24 @@
-<!--
-  Generated template for the DatosdusuarioPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <ion-title>datosdusuario</ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+        <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+    <ion-card>
+        
+        <ion-card-content>
+          <ion-card-title ALIGN="left">
+           {{noticia.email}}
+            </ion-card-title>
+          <p ALIGN="justify">
+            {{noticia.software}}
+          </p>
+        </ion-card-content>
+      </ion-card>
 
 </ion-content>
