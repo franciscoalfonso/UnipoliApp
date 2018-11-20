@@ -3,7 +3,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import {CroquisUniPage,
 DirectorioInstiPage,
 PaaldohadeservirPage,
-UniversidadPage} from '../../index.paginas';
+UniversidadPage,
+VerDetallesPage,
+SeleccionarCarreraPage} from '../../index.paginas';
 
 /**
  * Generated class for the OfertaAcademicaPage page.
@@ -16,6 +18,7 @@ UniversidadPage} from '../../index.paginas';
 @Component({
   selector: 'page-oferta-academica',
   templateUrl: 'oferta-academica.html',
+  
 })
 export class OfertaAcademicaPage {
   /*
@@ -26,6 +29,8 @@ Manp:any = OaManufacturaPage;
 PyMp:any = OaPyMesPage;
 Telp:any = OaTelePage;
 */
+homeg: any = VerDetallesPage;
+seleccionar: any = SeleccionarCarreraPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

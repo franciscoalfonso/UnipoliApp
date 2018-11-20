@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Aspirantes </ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+        <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <!--<img src="{{n.foto}}"/>-->
+        <ion-card-content>
+          <ion-card-title ALIGN="left">
+           {{aspirante.nombre}}
+            </ion-card-title>
+          <p ALIGN="justify">
+           Apellidos: {{aspirante.apellido}}
+          </p>
+          <p ALIGN="justify">
+            Email: {{aspirante.email}}
+          </p>
+          <p ALIGN="justify">
+            Escuela de Procedencia: {{aspirante.escuela}}
+          </p>
+          <p ALIGN="justify">
+            Interesado/a en la carrera de: {{aspirante.carrera}}
+          </p>
+     
+        </ion-card-content>
+      </ion-card>
+
+</ion-content>

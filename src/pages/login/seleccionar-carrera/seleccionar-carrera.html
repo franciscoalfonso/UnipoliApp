@@ -23,15 +23,25 @@
             </b>
             </h2>
           <br>
-        <ion-item>
-          <ion-label class="alumno">Alumno</ion-label>
+        <ion-item *ngIf="mostrar">
+          <ion-label class="alumno">Ver mensajes de otras carreras</ion-label>
          <ion-radio  (ionSelect)="perfil('alu')"></ion-radio>
          <!--  <ion-radio value="go"></ion-radio>-->
         </ion-item>
       
-        <ion-item>
+        <ion-item >
           <ion-label class="profe">Profesor</ion-label>
           <ion-radio (ionSelect)="perfil('profe')"></ion-radio>
+        </ion-item>
+
+        <ion-item *ngIf="mostrar">
+          <ion-label class="profe">ver aspirantes por carrera</ion-label>
+          <ion-radio (ionSelect)="perfil('aspirantes')"></ion-radio>
+        </ion-item>
+
+        <ion-item >
+          <ion-label class="profe">cerrar sesion</ion-label>
+          <ion-radio (ionSelect)="perfil('cerrar')"></ion-radio>
         </ion-item>
       
       </ion-list>

@@ -3,7 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { IonicStorageModule } from '@ionic/storage';
+import { BackgroundMode } from '@ionic-native/background-mode';
 //pages
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/Noticias/home/home';
@@ -50,7 +51,12 @@ import {
   CarreraRegistroPage,
   InforegistroPage,
   DatosdusuarioPage,
-  LoginStatePage
+  LoginStatePage,
+  AspiranteRegistroPage,
+  SelectCareraVerAspirantesPage,
+  VerAspirantesPage,
+  VerDetallesdelAspirantePage,
+  PaginadecargaPage
 
 } from '../pages/index.paginas';
 
@@ -70,6 +76,7 @@ import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 //import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 import { LoginUserProvider } from '../providers/login-user/login-user';
+
 
 @NgModule({
   declarations: [
@@ -116,7 +123,12 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     CarreraRegistroPage,
     InforegistroPage,
     DatosdusuarioPage,
-    LoginStatePage
+    LoginStatePage,
+    AspiranteRegistroPage,
+    SelectCareraVerAspirantesPage,
+    VerAspirantesPage,
+    VerDetallesdelAspirantePage,
+    PaginadecargaPage
   ],
   imports: [
     BrowserModule,
@@ -124,7 +136,8 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     AngularFireStorageModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -170,7 +183,12 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     CarreraRegistroPage,
     InforegistroPage,
     DatosdusuarioPage,
-    LoginStatePage
+    LoginStatePage,
+    AspiranteRegistroPage,
+    SelectCareraVerAspirantesPage,
+    VerAspirantesPage,
+    VerDetallesdelAspirantePage,
+    PaginadecargaPage
   ],
   providers: [
     StatusBar,
@@ -181,7 +199,7 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     LocalNotifications,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginUserProvider,
-
+    BackgroundMode
   ]
 })
 export class AppModule { }

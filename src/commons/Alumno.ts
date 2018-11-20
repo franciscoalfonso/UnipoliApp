@@ -7,5 +7,5 @@ export interface Alumno {
     pymes: boolean,
     email: string,
     admin: boolean,
-    aspirante: boolean
+    
 }

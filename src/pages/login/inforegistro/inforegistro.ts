@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../../Noticias/home/home';
+
 
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Registro } from '../../../commons/registro';
-import { Prueba } from '../../../commons/prueba';
+
 import { Observable, } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import { TabsPage, DatosdusuarioPage } from '../../index.paginas';
+import {  DatosdusuarioPage } from '../../index.paginas';
 
 
 

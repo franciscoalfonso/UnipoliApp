@@ -1,0 +1,80 @@
+<ion-header>
+  
+  <ion-navbar color="secondary">
+    <ion-title>Registro De Aspirante</ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+        <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding> 
+    <ion-card>
+  <ion-card-content>
+      
+    <ion-list>
+      <ion-label class="label">Escribe el Mensaje</ion-label>
+
+      <ion-item>
+        <ion-input [(ngModel)]="Nombre" type="text" placeholder="Nombre(s): " class ="tit"><b></b></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea [(ngModel)]="Apellidos" type="text" placeholder="Apellidos: "></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea [(ngModel)]="Escuela" type="text" placeholder="Escuela de procedencia: "></ion-textarea>
+      </ion-item>
+
+
+     </ion-list>
+  
+
+     <ion-list radio-group  [(ngModel)]="carrera">
+      <h2>
+        <b>
+        Selecciona la carrera en la que estas interesado:
+      </b>
+      </h2>
+    <br>
+      <ion-item>
+        <ion-label>Ing. Software</ion-label>
+        <ion-radio  value="software" ></ion-radio>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Lic. En Adm. De PyME's</ion-label>
+        <ion-radio value="pymes"></ion-radio>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Ing. En Tec. Ambiental</ion-label>
+        <ion-radio value="ambiental"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Ing. Civil</ion-label>
+        <ion-radio value="civil"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Ing. En Tec. De Manufactura</ion-label>
+          <ion-radio value="manufactura"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Ing. En Redes y Telecomunicacion</ion-label>
+          <ion-radio value="telematica"></ion-radio>
+      </ion-item>
+
+    </ion-list>
+
+       <button ion-button class="enviar" (click)="registrar(carrera)" round>Registrar</button>
+
+
+
+  </ion-card-content>
+</ion-card>
+
+</ion-content>

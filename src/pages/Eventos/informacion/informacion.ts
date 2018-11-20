@@ -4,6 +4,7 @@ import { SeleccionarCarreraPage, HomePage } from "../../index.paginas"
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { Platform } from 'ionic-angular/platform/platform';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-informacion',
@@ -13,15 +14,17 @@ export class InformacionPage {
   seleccionar: any = SeleccionarCarreraPage;
   data = { title: '', description: '' };
 
-software: boolean;
-pymes: boolean;
-ambiental: boolean;
-civil: boolean;
-manufactura: boolean;
-telematica: boolean;
+  software: boolean;
+  pymes: boolean;
+  ambiental: boolean;
+  civil: boolean;
+  manufactura: boolean;
+  telematica: boolean;
+  softwarecont: number = 0;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
     private platform: Platform, private localNotifications: LocalNotifications,
+    private storage: Storage,
     public navParams: NavParams) {
   }
 
@@ -29,7 +32,7 @@ telematica: boolean;
 
     this.data.title = this.navParams.get('title');
     this.data.description = this.navParams.get('desc');
-   
+
     var date = new Date(this.data.title + " " + this.data.description);
     console.log(date);
     this.localNotifications.schedule({
@@ -45,31 +48,37 @@ telematica: boolean;
       buttons: ['OK']
     });
 
-    if (this.software == true){
-      console.log("llego al caso 1 de software")
-        this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera':"software" });
+    if (this.software == true) {
+      console.log("llego al caso 1 de software", this.softwarecont)
+      this.storage.set('carrera', 'software');
+      this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "software" });
     }
-    if (this.ambiental == true){
-      console.log("llego al caso 2 de ambiental")
-        this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera':"ambiental" });
+    if (this.ambiental == true) {
+      console.log("llego al caso 2 de ambiental");
+      this.storage.set('carrera', 'ambiental');
+      this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "ambiental" });
     }
-    if (this.pymes == true){
-      console.log("llego al caso 3 de pymes")
-        this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera':"pymes" });
+    if (this.pymes == true) {
+      console.log("llego al caso 3 de pymes");
+      this.storage.set('carrera', 'pymes');
+      this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "pymes" });
     }
-    if (this.civil == true){
-      console.log("llego al caso 4 de civil")
-        this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera':"civil" });
+    if (this.civil == true) {
+      console.log("llego al caso 4 de civil");
+      this.storage.set('carrera', 'civil');
+      this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "civil" });
     }
-    if (this.manufactura == true){
+    if (this.manufactura == true) {
       console.log("llego al caso 5 de manufactura")
-        this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera':"manufactura" });
+      this.storage.set('carrera', 'manufactura');
+      this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "manufactura" });
     }
-    if (this.telematica == true){
-      console.log("llego al caso 6 de telematica")
-        this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera':"telematica" });
+    if (this.telematica == true) {
+      console.log("llego al caso 6 de telematica");
+      this.storage.set('carrera', 'telematica');
+      this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "telematica" });
     }
-    
+
     alert.present();
 
     console.log(this.data);

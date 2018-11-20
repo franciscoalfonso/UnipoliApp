@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../../tabs/tabs';
-import { TabsAspiPage } from '../../aspirantes/tabs-aspi/tabs-aspi';
 import { LoginPage } from '../login/login';
+import { Storage } from '@ionic/storage';
 
-/**
- * Generated class for the LoginStatePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 
 @Component({
@@ -18,36 +12,41 @@ import { LoginPage } from '../login/login';
 })
 export class LoginStatePage {
 
-  estadoLog = "nologueado";
-  contador = "re";
+  loggeo: any;
 
   constructor(public navCtrl: NavController,
-    public navParams: NavParams) {
-   
+    public navParams: NavParams,
+    private storage: Storage) {
+
+
+      Promise.all([this.storage.get("loggeo")]).then(values => {
+        console.log("estado de loggeo", values[0]);
+        this.loggeo = values[0];
+
+        console.log("el usuario esta loggeado= ", this.loggeo)
+
+        switch (this.loggeo) {
+          case 'true': {
+            console.log("es admin");
+            this.navCtrl.setRoot(TabsPage);
+            
+          } break;
+          case 'false': {
+            console.log("no es admin");
+            this.navCtrl.setRoot(LoginPage);
+            
+          } break;
+          case 'salir': {
+            console.log("no es admin");
+            this.navCtrl.setRoot(LoginPage);
+            
+          } break;
+          case null: {
+            console.log("no es admin");
+            this.navCtrl.setRoot(LoginPage);
+            
+          } break;
+        }
+      });
   }
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginStatePage');
-    console.log("hola contador", this.contador);
-
-    this.estadoLog = this.navParams.get('estado');
-
-    if (this.estadoLog == "usuariounipoli") {
-      this.navCtrl.setRoot(TabsPage);
-    }
-    if (this.estadoLog == "aspirante") {
-      this.navCtrl.setRoot(TabsAspiPage);
-    }
-    if (this.contador == "re") {
-      this.navCtrl.setRoot(LoginPage);
-      this.contador = "co";
-      console.log("adios contador", this.contador)
-    }
-    else if (this.estadoLog == "nologueado") {
-      this.navCtrl.setRoot(LoginPage);
-    }
-
-  }
-
 }

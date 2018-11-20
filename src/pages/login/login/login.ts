@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Loading, LoadingController, AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { RegistroPage, OlvidarcontraceñaPage, InforegistroPage, TabsPage } from "../../index.paginas"
-import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
-import { Registro } from '../../../commons/registro';
+import { RegistroPage, OlvidarcontraceñaPage, InforegistroPage } from "../../index.paginas"
 import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as firebase from 'firebase/app';
 import { TabsAspiPage } from '../../aspirantes/tabs-aspi/tabs-aspi';
+import { AspiranteRegistroPage } from '../aspirante-registro/aspirante-registro';
+import { TabsPage } from '../../tabs/tabs';
 
 
 
@@ -22,25 +23,23 @@ export class LoginPage {
   registro: any = RegistroPage;
   olvidar: any = OlvidarcontraceñaPage;
 
-  //user = {} as User;
-  carrera: string = '';
   correo: string = '';
   aspirante: boolean;
 
   myForm: FormGroup;
   user: Observable<firebase.User>;
+  
   public loading: Loading;
 
-  admin: boolean;
   usuario: string = '';
 
   constructor(private afAuth: AngularFireAuth,
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    private readonly afs: AngularFirestore,
+    private storage: Storage,
     public formBuilder: FormBuilder,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
   ) {
     this.myForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -52,7 +51,9 @@ export class LoginPage {
  
   loginUser() {
 
+    
     this.usuario = this.myForm.value.email;
+    //this.storage.set('carrera', this.usuario);
 
     console.log("Email:" + this.myForm.value.email);
     console.log("Password:" + "this.myForm.value.password");
@@ -60,14 +61,22 @@ export class LoginPage {
 
     this.afAuth.auth.signInWithEmailAndPassword(this.myForm.value.email, this.myForm.value.password).then(() => {
       console.log("User logging");
+      this.storage.set('loggeo', 'true');
 
       if (this.myForm.value.email.indexOf("@unipolidgo.edu.mx") != -1) {
         console.log("eres estudiante unipoli");
-        this.navCtrl.setRoot(InforegistroPage);
-        this.enviar();    
+        this.storage.set('loggeo', 'true')
+        this.storage.set('tipo', 'estudianteomaestro');
+        this.navCtrl.push(InforegistroPage, { 'email': this.usuario});
+
+                   
       } else {
         console.log("eres aspirante unipoli");
-        this.navCtrl.setRoot(TabsAspiPage);
+        this.storage.set('tipo', 'aspirante');
+        this.storage.set('admin', 'false')
+        this.storage.set('loggeo', 'true')
+        this.navCtrl.setRoot(TabsPage);
+        //this.navCtrl.setRoot(AspiranteRegistroPage);
       }
 
     }, (err) => {
@@ -91,16 +100,5 @@ export class LoginPage {
     this.loading.present();
   }
 
-  enviar(){
-    this.navCtrl.push(InforegistroPage, { 'email': this.usuario});
-  }
-  /*
-    logout(){
-      firebase.auth().signOut().then(function() {
-        // Sign-out successful.
-      }).catch(function(error) {
-        // An error happened.
-      });
-    }
-    */
+
 }

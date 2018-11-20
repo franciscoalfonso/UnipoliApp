@@ -43,19 +43,17 @@ export class AuthProvider {
         console.log('Something went wrong:', err.message);
       });
   }
-
+/*
   login(email: string, password: string) {
     this.firebaseAuth.auth.signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log('Nice, it worked!');
       }).catch(err => {
-        /*this.alertCtrl.create({
-          title: "Error!",
-          message: err.message
-        }).present();*/
+        
+      
       });
   }
-
+*/
   logout() {
     this.firebaseAuth.auth.signOut();
   }

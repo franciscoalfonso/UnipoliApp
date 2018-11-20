@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
+
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { Alumno } from '../../../commons/Alumno';
 import { map } from 'rxjs/operators';
 import { HomePage } from '../../index.paginas';
-import { TabsPage } from '../../tabs/tabs';
+import { Storage } from '@ionic/storage';
+import { LoginPage } from '../login/login';
+import { LoginStatePage } from '../login-state/login-state';
 
 @Component({
   selector: 'page-carrera-registro',
@@ -16,18 +18,19 @@ export class CarreraRegistroPage {
   
   private StudentCollection: AngularFirestoreCollection<Alumno>;
   student: Observable<Alumno[]>;
-  aspirante: boolean;
+  //aspirante: boolean;
   carrera: string;
   email: string;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    private afAuth: AngularFireAuth,
     private readonly afs: AngularFirestore,
-    private database: AngularFirestore
+    private database: AngularFirestore,
+    private storage: Storage
     ) {
-      this.navCtrl.setRoot(TabsPage);
 
+      this.carrera = this.navParams.get('carrera');
+      
     this.StudentCollection = this.afs.collection<Alumno>('reg');
     this.student = this.StudentCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -41,8 +44,8 @@ export class CarreraRegistroPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CarreraRegistroPage');
   }
-  public hide(carrera) {
-    this.aspirante = this.navParams.get('aspirante');
+  public hide() {
+
     this.email = this.navParams.get('email');
 
     
@@ -51,7 +54,7 @@ export class CarreraRegistroPage {
       console.log(this.carrera);
       this.navCtrl.push(HomePage, { 'carrera': this.carrera }); 
     
-      console.log("aspirante: ", this.aspirante);
+      //console.log("aspirante: ", this.aspirante);
       console.log(this.email);
 
       if (this.carrera == "software") {
@@ -68,12 +71,11 @@ export class CarreraRegistroPage {
           'telematica': false,
           'admin': false,
           'email': this.email,
-          'aspirante': this.aspirante
         }
         this.StudentCollection.doc(id).set(student);
         
-
-      } if (this.carrera == "ambiental") {
+      }
+       if (this.carrera == "ambiental") {
 
         const id = this.database.createId();
 
@@ -86,12 +88,9 @@ export class CarreraRegistroPage {
           'telematica': false,
           'admin': false,
           'email': this.email,
-          'aspirante': this.aspirante
-
         }
-
         this.StudentCollection.doc(id).set(student);
-
+        
       }
       if (this.carrera == "civil") {
 
@@ -106,14 +105,11 @@ export class CarreraRegistroPage {
           'telematica': false,
           'admin': false,
           'email': this.email,
-          'aspirante': this.aspirante
-
         }
-
         this.StudentCollection.doc(id).set(student);
+        
       }
       if (this.carrera == "manufactura") {
-
 
         const id = this.database.createId();
 
@@ -126,11 +122,9 @@ export class CarreraRegistroPage {
           'telematica': false,
           'admin': false,
           'email': this.email,
-          'aspirante': this.aspirante
-
         }
-
         this.StudentCollection.doc(id).set(student);
+        
       }
       if (this.carrera == "pymes") {
 
@@ -145,10 +139,10 @@ export class CarreraRegistroPage {
           'telematica': false,
           'admin': false,
           'email': this.email,
-          'aspirante': this.aspirante
+          
         }
-
         this.StudentCollection.doc(id).set(student);
+        
       }
       else if (this.carrera == "telematica") {
 
@@ -163,11 +157,14 @@ export class CarreraRegistroPage {
           'telematica': true,
           'admin': false,
           'email': this.email,
-          'aspirante': this.aspirante
+          
         }
-
         this.StudentCollection.doc(id).set(student);
+        
       }
+
+      this.navCtrl.setRoot(LoginStatePage);
+      
     } catch{
 
     }
