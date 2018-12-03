@@ -28,8 +28,8 @@ export class VerDetallesPage {
     this.noticia = this.navParams.get('id');
     this.titu1 = this.noticia.titulo;
 
-    console.log(this.noticia.descripcion);
-    console.log(this.noticia.titulo);
+   // console.log(this.noticia.descripcion);
+    //console.log(this.noticia.titulo);
 
     this.storage.set('titulo', this.titu1);
 

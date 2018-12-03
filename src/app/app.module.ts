@@ -47,7 +47,6 @@ import {
   OfertaAcademicaPage,
   TabsAspiPage,
   UniversidadPage,
-  PaaldohadeservirPage,
   CarreraRegistroPage,
   InforegistroPage,
   DatosdusuarioPage,
@@ -56,13 +55,15 @@ import {
   SelectCareraVerAspirantesPage,
   VerAspirantesPage,
   VerDetallesdelAspirantePage,
-  PaginadecargaPage
+  PaginadecargaPage,
+  BtnInicioAdminPage,
+  DetallesOfertaAcPage
 
 } from '../pages/index.paginas';
 
 //plugins angularfire2
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule, EnablePersistenceToken } from 'angularfire2/firestore';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
@@ -119,7 +120,6 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     OfertaAcademicaPage,
     TabsAspiPage,
     UniversidadPage,
-    PaaldohadeservirPage,
     CarreraRegistroPage,
     InforegistroPage,
     DatosdusuarioPage,
@@ -128,7 +128,9 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     SelectCareraVerAspirantesPage,
     VerAspirantesPage,
     VerDetallesdelAspirantePage,
-    PaginadecargaPage
+    PaginadecargaPage,
+    BtnInicioAdminPage,
+    DetallesOfertaAcPage
   ],
   imports: [
     BrowserModule,
@@ -179,7 +181,6 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     OfertaAcademicaPage,
     TabsAspiPage,
     UniversidadPage,
-    PaaldohadeservirPage,
     CarreraRegistroPage,
     InforegistroPage,
     DatosdusuarioPage,
@@ -188,7 +189,9 @@ import { LoginUserProvider } from '../providers/login-user/login-user';
     SelectCareraVerAspirantesPage,
     VerAspirantesPage,
     VerDetallesdelAspirantePage,
-    PaginadecargaPage
+    PaginadecargaPage,
+    BtnInicioAdminPage,
+    DetallesOfertaAcPage
   ],
   providers: [
     StatusBar,

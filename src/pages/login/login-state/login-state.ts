@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../../tabs/tabs';
 import { LoginPage } from '../login/login';
 import { Storage } from '@ionic/storage';
+import { TabsAspiPage } from '../../aspirantes/tabs-aspi/tabs-aspi';
 
 
 
@@ -23,16 +24,21 @@ export class LoginStatePage {
         console.log("estado de loggeo", values[0]);
         this.loggeo = values[0];
 
-        console.log("el usuario esta loggeado= ", this.loggeo)
+        console.log("el usuario esta loggeado= ", this.loggeo);
 
         switch (this.loggeo) {
           case 'true': {
-            console.log("es admin");
+            console.log("esta loggeado");
             this.navCtrl.setRoot(TabsPage);
             
           } break;
+          case 'aspi': {
+            console.log("es aspirante");
+            this.navCtrl.setRoot(TabsAspiPage);
+            
+          } break;
           case 'false': {
-            console.log("no es admin");
+            console.log("no esta loggeado");
             this.navCtrl.setRoot(LoginPage);
             
           } break;

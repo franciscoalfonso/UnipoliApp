@@ -11,11 +11,16 @@
   <ion-list *ngFor="let noticia of noticias | async">
     <ion-item>
    
-      <h2>Solo podras iniciar sesion una vez</h2>
-      <p>si elegiste la carreara incorrecta</p>
-      <p>contacta al administrador </p>
+      <p>Iniciaste sesion con: </p>
+      <p>{{noticia.email}}</p>
+      <p>si verificamos que tu email</p>
+      <p>es perteneciente a un profesor </p>
+      <p>o administrativo podras hacer</p>
+      <p>uso de las herramientas de</p>
+      <p> la aplicacion.</p>
       
-      <button ion-button clear item-end (tap)="detalles(noticia)">ok</button>
+      
+      <button ion-button clear item-end (tap)="detalles(noticia)">aceptar</button>
     </ion-item>
   </ion-list>
 

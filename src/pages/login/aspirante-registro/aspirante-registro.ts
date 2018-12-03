@@ -4,8 +4,9 @@ import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/fires
 import { Observable } from 'rxjs/Observable';
 import { Aspirantes } from '../../../commons/Aspirantes';
 import { map } from 'rxjs/operators';
-
-import { LoginStatePage } from '../../index.paginas';
+import { LoginStatePage } from '../login-state/login-state';
+import { Storage } from '@ionic/storage';
+import { LoginPage } from '../../index.paginas';
 
 @Component({
   selector: 'page-aspirante-registro',
@@ -16,18 +17,19 @@ export class AspiranteRegistroPage {
   private StudentCollection: AngularFirestoreCollection<Aspirantes>;
   student: Observable<Aspirantes[]>;
 
-  Nombre: string='';
-  Apellidos: string='';
-  Escuela: string='';
-  carrera: string='';
-  email: string='';
+  Nombre: string = '';
+  Apellidos: string = '';
+  Escuela: string = '';
+  carrera: string = '';
+  email: string = '';
   urlimagen: string = "https://firebasestorage.googleapis.com/v0/b/appunipoli.appspot.com/o/usuario.png?alt=media&token=f0f4be51-3404-4983-aa0d-0127f86be086";
 
   constructor(public navCtrl: NavController,
-     public navParams: NavParams,
-     private readonly afs: AngularFirestore,
-     private database: AngularFirestore
-     ) {
+    public navParams: NavParams,
+    private readonly afs: AngularFirestore,
+    private database: AngularFirestore,
+    private storage: Storage
+  ) {
     this.StudentCollection = this.afs.collection<Aspirantes>('registro_aspirantes');
     this.student = this.StudentCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -44,22 +46,24 @@ export class AspiranteRegistroPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AspiranteRegistroPage');
   }
-registrar(){
-  
+  registrar() {
 
-  console.log(this.Nombre,this.Apellidos,this.Escuela,this.carrera);
-  const id = this.database.createId();
-  const student: Aspirantes = {
-    'nombre': this.Nombre,
-    'apellido': this.Apellidos,
-    'email': this.email,
-    'escuela': this.Escuela,
-    'carrera': this.carrera,
-    'urlimagen': this.urlimagen
-   
+
+    console.log(this.Nombre, this.Apellidos, this.Escuela, this.carrera);
+    const id = this.database.createId();
+    const student: Aspirantes = {
+      'nombre': this.Nombre,
+      'apellido': this.Apellidos,
+      'email': this.email,
+      'escuela': this.Escuela,
+      'carrera': this.carrera,
+      'urlimagen': this.urlimagen
+
+    }
+    this.StudentCollection.doc(id).set(student);
+    
+    this.storage.set('tipo', 'asprante');
+
+    this.navCtrl.setRoot(LoginPage);
   }
-  this.StudentCollection.doc(id).set(student);
-
-  this.navCtrl.setRoot(LoginStatePage);
-}
 }

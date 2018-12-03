@@ -35,7 +35,6 @@ export { AgregarPage } from './agregar/agregar';
 export { CroquisUniPage } from './aspirantes/croquis-uni/croquis-uni';
 export { DirectorioInstiPage } from './aspirantes/directorio-insti/directorio-insti';
 export { OfertaAcademicaPage } from './aspirantes/oferta-academica/oferta-academica';
-export { PaaldohadeservirPage } from './aspirantes/paaldohadeservir/paaldohadeservir';
 export { UniversidadPage } from './aspirantes/universidad/universidad';
 export { TabsAspiPage } from './aspirantes/tabs-aspi/tabs-aspi';
 export { CarreraRegistroPage } from './login/carrera-registro/carrera-registro';
@@ -46,4 +45,6 @@ export { AspiranteRegistroPage } from './login/aspirante-registro/aspirante-regi
 export { VerAspirantesPage } from './aspirantes/ver-aspirantes/ver-aspirantes';
 export { VerDetallesdelAspirantePage } from './aspirantes/ver-detallesdel-aspirante/ver-detallesdel-aspirante';
 export { SelectCareraVerAspirantesPage } from './aspirantes/select-carera-ver-aspirantes/select-carera-ver-aspirantes'
-export { PaginadecargaPage } from './paginadecarga/paginadecarga'
+export { PaginadecargaPage } from './paginadecarga/paginadecarga';
+export { BtnInicioAdminPage } from './login/btn-inicio-admin/btn-inicio-admin';
+export { DetallesOfertaAcPage } from './aspirantes/detalles-oferta-ac/detalles-oferta-ac';

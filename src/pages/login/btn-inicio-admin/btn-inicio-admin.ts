@@ -5,12 +5,13 @@ import { Registro } from '../../../commons/registro';
 import { Observable, } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import {  DatosdusuarioPage } from '../../index.paginas';
+import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'page-inforegistro',
-  templateUrl: 'inforegistro.html',
+  selector: 'page-btn-inicio-admin',
+  templateUrl: 'btn-inicio-admin.html',
 })
-export class InforegistroPage {
+export class BtnInicioAdminPage {
 
   usuario: string = "";
  
@@ -19,15 +20,21 @@ export class InforegistroPage {
 
   constructor(public navCtrl: NavController,
     private readonly afs: AngularFirestore,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    private storage: Storage) {
   
 
     this.usuario = this.navParams.get('email');
-    console.log(this.usuario, ": variable para la consulta");
+    
 
   }
 
   ionViewDidLoad() {
+    Promise.all([this.storage.get("correodeprofe")]).then(values => {
+      console.log("a", values[0]);
+      this.usuario = values[0];
+      
+      console.log(this.usuario, ": variable para la consulta");
     try{
       this.noticiasCollection = this.afs.collection<Registro>("reg", ref => ref.where('email', '==', this.usuario));
       this.noticias = this.noticiasCollection.snapshotChanges().pipe(
@@ -40,6 +47,9 @@ export class InforegistroPage {
     }catch (e) { 
       console.log(e);
     }
+
+  })
+
   }
  detalles(_noticia: Registro) {
     this.navCtrl.push(DatosdusuarioPage, {
@@ -50,4 +60,5 @@ export class InforegistroPage {
 
 
 }
+
 

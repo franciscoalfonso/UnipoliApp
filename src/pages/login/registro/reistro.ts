@@ -44,13 +44,17 @@ export class RegistroPage {
           if (user.email.indexOf("@unipolidgo.edu.mx") != -1) {
             console.log("eres estudiante unipoli");
             this.storage.set('tipo', 'estudianteomaestro');
+            this.storage.set('admin', 'false');
             this.email = user.email;
+            this.storage.set('correodeprofe', this.email);
+            
             this.navCtrl.push(CarreraRegistroPage, { 'email': this.email });
             
           } else {
             console.log("eres aspirante unipoli");
             this.storage.set('tipo', 'aspirante');
             this.storage.set('admin', 'false');
+            this.storage.set('loggeo', 'aspi');
             this.email = user.email;
             this.navCtrl.push(AspiranteRegistroPage, { 'email': this.email});
           }
@@ -66,7 +70,12 @@ export class RegistroPage {
       }
 
     } catch (e) {
-      console.error(e);
+      //console.error(e);
+      let alert = this.alertCtrl.create({
+        title: 'El email esta en uso',
+        buttons: ['OK']
+      });
+      alert.present();
     }
 
   }

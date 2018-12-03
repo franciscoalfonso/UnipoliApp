@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { SeleccionarCarreraPage, HomePage } from "../../index.paginas"
-import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { Platform } from 'ionic-angular/platform/platform';
-import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'page-informacion',
@@ -23,8 +21,6 @@ export class InformacionPage {
   softwarecont: number = 0;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,
-    private platform: Platform, private localNotifications: LocalNotifications,
-    private storage: Storage,
     public navParams: NavParams) {
   }
 
@@ -35,62 +31,47 @@ export class InformacionPage {
 
     var date = new Date(this.data.title + " " + this.data.description);
     console.log(date);
-    this.localNotifications.schedule({
-      text: this.data.title,
-      //at: date,
-      led: 'FF0000',
-      sound: this.setSound(),
-    });
+
 
     let alert = this.alertCtrl.create({
-      title: 'Enviado!',
-      subTitle: 'Configuración de notificación con éxito',
+      title: 'Mensaje enviado!',
+      subTitle: 'puedes ver los mensajes por carrera en el boton superior derecho',
       buttons: ['OK']
     });
+    alert.present();
 
     if (this.software == true) {
       console.log("llego al caso 1 de software", this.softwarecont)
-      this.storage.set('carrera', 'software');
       this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "software" });
     }
     if (this.ambiental == true) {
       console.log("llego al caso 2 de ambiental");
-      this.storage.set('carrera', 'ambiental');
       this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "ambiental" });
     }
     if (this.pymes == true) {
       console.log("llego al caso 3 de pymes");
-      this.storage.set('carrera', 'pymes');
       this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "pymes" });
     }
     if (this.civil == true) {
       console.log("llego al caso 4 de civil");
-      this.storage.set('carrera', 'civil');
       this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "civil" });
     }
     if (this.manufactura == true) {
-      console.log("llego al caso 5 de manufactura")
-      this.storage.set('carrera', 'manufactura');
+      console.log("llego al caso 5 de manufactura");
       this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "manufactura" });
     }
     if (this.telematica == true) {
       console.log("llego al caso 6 de telematica");
-      this.storage.set('carrera', 'telematica');
       this.navCtrl.push(HomePage, { 'titulo': this.data.title, 'descripcion': this.data.description, 'carrera': "telematica" });
     }
 
-    alert.present();
+    
 
     console.log(this.data);
 
     this.data = { title: '', description: '' };
+    
   }
-  setSound() {
-    if (this.platform.is('android')) {
-      return 'file://assets/sounds/Rooster.mp3'
-    } else {
-      return 'file://assets/sounds/Rooster.caf'
-    }
-  }
+
 }
 

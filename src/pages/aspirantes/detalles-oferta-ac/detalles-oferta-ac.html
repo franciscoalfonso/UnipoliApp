@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Oferta Academica</ion-title>
+    <ion-buttons end [navPush]= "seleccionar">
+        <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <img src="{{noticia.img}}">
+        <ion-card-content>
+          <ion-card-title ALIGN="left">
+           {{noticia.titulo}}
+            </ion-card-title>
+          <p ALIGN="justify">
+            {{noticia.descripcion}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+
+</ion-content>

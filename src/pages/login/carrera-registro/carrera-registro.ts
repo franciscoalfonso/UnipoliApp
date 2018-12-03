@@ -7,7 +7,7 @@ import { Alumno } from '../../../commons/Alumno';
 import { map } from 'rxjs/operators';
 import { HomePage } from '../../index.paginas';
 import { Storage } from '@ionic/storage';
-import { LoginPage } from '../login/login';
+
 import { LoginStatePage } from '../login-state/login-state';
 
 @Component({
@@ -52,7 +52,8 @@ export class CarreraRegistroPage {
     try {
 
       console.log(this.carrera);
-      this.navCtrl.push(HomePage, { 'carrera': this.carrera }); 
+      this.storage.set('carrera', 'software');
+      //this.navCtrl.push(HomePage, { 'carrera': this.carrera }); 
     
       //console.log("aspirante: ", this.aspirante);
       console.log(this.email);
@@ -164,7 +165,7 @@ export class CarreraRegistroPage {
       }
 
       this.navCtrl.setRoot(LoginStatePage);
-      
+
     } catch{
 
     }

@@ -1,54 +1,63 @@
 <ion-header>
 
   <ion-navbar color="secondary">
-    <ion-title>Seleccion</ion-title>
+    <ion-title></ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding><ion-card>
-  
-    <ion-card-header class="bienvenido"> 
-      Bienvenido (a)
+<ion-content padding>
+  <ion-card>
+
+    <ion-card-header *ngIf="!mostrar" class="bienvenido">
+      eres Profesor?
     </ion-card-header>
     <br>
-  
+
     <ion-card-content>
-    
+
       <ion-list radio-group>
-          <h2>
-              <b>
-              Selecciona si eres Estudiante o Docente.
-            </b>
-            </h2>
-          <br>
+
+        <br>
         <ion-item *ngIf="mostrar">
           <ion-label class="alumno">Ver mensajes de otras carreras</ion-label>
-         <ion-radio  (ionSelect)="perfil('alu')"></ion-radio>
-         <!--  <ion-radio value="go"></ion-radio>-->
+          <ion-radio (ionSelect)="perfil('alu')"></ion-radio>
+          <!--  <ion-radio value="go"></ion-radio>-->
         </ion-item>
-      
+
+        <!--inisio de sesion para pruebas
+        <ion-item *ngIf="!mostrar">
+          <ion-label class="profe"> iniciar sesion </ion-label>
+          <ion-radio (ionSelect)="perfil('profe')"></ion-radio>
+        </ion-item>
+        -->
+       <!--este boton lleva a inicio para hacer pruebas 
         <ion-item >
           <ion-label class="profe">Profesor</ion-label>
           <ion-radio (ionSelect)="perfil('profe')"></ion-radio>
+        </ion-item>
+-->
+        <ion-item *ngIf="!mostrar">
+          <ion-label class="profe"> Presiona este boton! </ion-label>
+          <ion-radio (ionSelect)="perfil('esprofesor')"></ion-radio>
         </ion-item>
 
         <ion-item *ngIf="mostrar">
           <ion-label class="profe">ver aspirantes por carrera</ion-label>
           <ion-radio (ionSelect)="perfil('aspirantes')"></ion-radio>
         </ion-item>
-
+        <!-- boton de cerrar sesion
         <ion-item >
           <ion-label class="profe">cerrar sesion</ion-label>
           <ion-radio (ionSelect)="perfil('cerrar')"></ion-radio>
         </ion-item>
-      
+      -->
       </ion-list>
-      
+
 
     </ion-card-content>
-  
+
   </ion-card>
 
 

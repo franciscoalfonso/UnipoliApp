@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {CroquisUniPage,
-DirectorioInstiPage,
-PaaldohadeservirPage,
-UniversidadPage,
+import {
 VerDetallesPage,
 SeleccionarCarreraPage} from '../../index.paginas';
-
-/**
- * Generated class for the OfertaAcademicaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import { OfertaAcademica} from '../../../commons/ofertaAcademica';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { DetallesOfertaAcPage } from '../detalles-oferta-ac/detalles-oferta-ac';
 
 @Component({
   selector: 'page-oferta-academica',
@@ -32,11 +26,32 @@ Telp:any = OaTelePage;
 homeg: any = VerDetallesPage;
 seleccionar: any = SeleccionarCarreraPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+private noticiasCollection: AngularFirestoreCollection<OfertaAcademica>;
+noticias: Observable<OfertaAcademica[]>;
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private readonly afs: AngularFirestore
+    ) {
+      this.noticiasCollection = afs.collection<OfertaAcademica>("ofertaAcademica");
+      this.noticias = this.noticiasCollection.snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as OfertaAcademica;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      );
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OfertaAcademicaPage');
+  }
+  detalles(_noticia: OfertaAcademica) {
+    this.navCtrl.push(DetallesOfertaAcPage, {
+      id: _noticia
+    })
+
   }
 
 }

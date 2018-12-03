@@ -1,65 +1,23 @@
 <ion-header>
-  <ion-navbar color="secondary" hideBackButton="true">
-    <ion-title>Oferta Academica</ion-title>
+  <ion-navbar color="secondary">
+    <ion-title>Oferta Academica  </ion-title>
     <ion-buttons end [navPush]= "seleccionar">
         <button ion-button icon-only><ion-icon name ="contact"></ion-icon></button></ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
-  <ion-card>
-    <ion-img class="imagen" src="/assets/imgs/isw1.jpg"></ion-img>
-    <ion-card-content>
-      <ion-card-title>Ingeniería en Software</ion-card-title>
-    </ion-card-content>
-  </ion-card>
-  <button class="boton-ver" [navPush]="Iswp"></button>
-
-
-  <ion-card>
-    <ion-img class="imagen" src="/assets/imgs/telematica2.jpg"></ion-img>
-    <ion-card-content>
-      <ion-card-title>Ingeniería en Redes y Telecomunicaciones</ion-card-title>
-    </ion-card-content>
-  </ion-card>
-  <button class="boton-ver-sec" [navPush]="Telp"></button>
-
-  <ion-card>
-    <ion-img class="imagen" src="/assets/imgs/civil.jpg"></ion-img>
-    <ion-card-content>
-      <ion-card-title>Ingeniería Civil</ion-card-title>
-    </ion-card-content>
-  </ion-card>
-  <button class="boton-ver-sec" [navPush]="Civp"></button>
-
-
-  <ion-card>
-    <ion-img class="imagen" src="/assets/imgs/pymesf.jpg"></ion-img>
-    <ion-card-content>
-      <ion-card-title>Lic. en Administración y Gestión de PyMES</ion-card-title>
-    </ion-card-content>
-  </ion-card>
-  <button class="boton-ver-sec" [navPush]="PyMp"></button>
-
-  <ion-card>
-    <ion-img class="imagen" src="/assets/imgs/amb.jpg"></ion-img>
-    <ion-card-content>
-      <ion-card-title>Ingeniería en Tecnología Ambiental</ion-card-title>
-    </ion-card-content>
-  </ion-card>
-  <button class="boton-ver-sec" [navPush]="Ambp"></button>
-
-  <ion-card>
-    <ion-img class="imagen" src="/assets/imgs/manu.jpg"></ion-img>
-    <ion-card-content>
-      <ion-card-title>Ingeniería en Tecnologías de Manufactura</ion-card-title>
-    </ion-card-content>
-  </ion-card>
-  <button class="boton-ver-sec" [navPush]="Manp"></button>
-
-  <div class="div"></div>
-
+  <ion-list *ngFor="let noticia of noticias | async">
+    <ion-item>
+      <ion-thumbnail item-start>
+         <img class="uno" src="{{noticia.img}}">
+      </ion-thumbnail>
+      <h2>{{noticia.titulo}}</h2>
+      <p>{{noticia.detalles}}</p>
+      <button ion-button clear item-end (tap)="detalles(noticia)">ver</button>
+    </ion-item>
+  </ion-list>
 
 
 </ion-content>

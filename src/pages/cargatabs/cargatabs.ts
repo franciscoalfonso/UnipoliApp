@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the PaaldohadeservirPage page.
+ * Generated class for the CargatabsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-paaldohadeservir',
-  templateUrl: 'paaldohadeservir.html',
+  selector: 'page-cargatabs',
+  templateUrl: 'cargatabs.html',
 })
-export class PaaldohadeservirPage {
+export class CargatabsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PaaldohadeservirPage');
+    console.log('ionViewDidLoad CargatabsPage');
   }
 
 }

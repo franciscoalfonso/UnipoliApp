@@ -8,9 +8,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as firebase from 'firebase/app';
-import { TabsAspiPage } from '../../aspirantes/tabs-aspi/tabs-aspi';
-import { AspiranteRegistroPage } from '../aspirante-registro/aspirante-registro';
 import { TabsPage } from '../../tabs/tabs';
+import { TabsAspiPage } from '../../aspirantes/tabs-aspi/tabs-aspi';
 
 
 
@@ -32,6 +31,7 @@ export class LoginPage {
   public loading: Loading;
 
   usuario: string = '';
+  contraseñadeprofe: string = '';
 
   constructor(private afAuth: AngularFireAuth,
     public navCtrl: NavController,
@@ -50,13 +50,15 @@ export class LoginPage {
   }
  
   loginUser() {
-
     
     this.usuario = this.myForm.value.email;
-    //this.storage.set('carrera', this.usuario);
+    this.contraseñadeprofe = this.myForm.value.password;
+    
+    this.storage.set('correodeprofe', this.usuario);
+    this.storage.set('contraseñadeprofe', this.contraseñadeprofe);
 
-    console.log("Email:" + this.myForm.value.email);
-    console.log("Password:" + "this.myForm.value.password");
+    //console.log("Email:" + this.myForm.value.email);
+    //console.log("Password:" + "this.myForm.value.password");
  
 
     this.afAuth.auth.signInWithEmailAndPassword(this.myForm.value.email, this.myForm.value.password).then(() => {
@@ -64,8 +66,8 @@ export class LoginPage {
       this.storage.set('loggeo', 'true');
 
       if (this.myForm.value.email.indexOf("@unipolidgo.edu.mx") != -1) {
-        console.log("eres estudiante unipoli");
-        this.storage.set('loggeo', 'true')
+       // console.log("eres estudiante unipoli");
+        this.storage.set('loggeo', 'true');
         this.storage.set('tipo', 'estudianteomaestro');
         this.navCtrl.push(InforegistroPage, { 'email': this.usuario});
 
@@ -73,9 +75,9 @@ export class LoginPage {
       } else {
         console.log("eres aspirante unipoli");
         this.storage.set('tipo', 'aspirante');
-        this.storage.set('admin', 'false')
-        this.storage.set('loggeo', 'true')
-        this.navCtrl.setRoot(TabsPage);
+        this.storage.set('admin', 'false');
+        this.storage.set('loggeo', 'aspi');
+        this.navCtrl.setRoot(TabsAspiPage);
         //this.navCtrl.setRoot(AspiranteRegistroPage);
       }
 
